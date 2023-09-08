@@ -3,10 +3,8 @@
 @import 'tailwindcss/utilities';
 
 @font-face {
-  font-family: 'Marvel';
-  src: url('/fonts/Marvel-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Marvel";
+  src: url("/public/styles/fonts/Marvel-Regular.ttf") format("ttf");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,7 +19,11 @@ body {
   background-color: black;
   font-weight: bold;
   font-size: large;
-  font-family: 'Marvel', sans-serif;
+  font-family: "Marvel", sans-serif;
+  width: 100%;
+}
+main{
+  height: 100vh;
 }
 nav {
   color: #ed1d24;
@@ -39,6 +41,9 @@ header {
 input:focus {
   outline: none;
 }
+input{
+  color:black;
+}
 
 #field {
   font-size: xx-large;
@@ -46,15 +51,20 @@ input:focus {
   margin: 0 auto;
 }
 
-table{
+#list img{
+
+  cursor: pointer
+}
+#list table{
   width: 100%;
 }
 
 .star {
   float: right;
   vertical-align: middle;
+  width: 40px;
 }
-#liste {
+#list {
   color: #d1d5db;
   
 }
@@ -62,4 +72,22 @@ table{
 .listImages {
   width: 350px;
   height: 350px;
+}
+#focus {
+  color: white;
+  width: 100%;
+  align-items: center;
+  height:100%;
+  padding-top: 10%;
+  padding-left: 20%;
+}
+#focus table{
+  text-align: justify;
+} 
+#focus td{
+  
+}
+#focus img {
+  width: 300px;
+  height: 300px;
 }
