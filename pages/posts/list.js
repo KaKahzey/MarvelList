@@ -14,14 +14,17 @@ export default function List() {
     const hash = MD5(`${timestamp}${privateKey}${publicKey}`).toString()
     const storedCharactersList = JSON.parse(localStorage.getItem("charactersList")) || []
     let [charactersList, setCharactersList] = useState(storedCharactersList)
-    //Search bar
     const [searchInput, setInput] = useState("")
+    const [favoriteCharactersList, setFavoriteCharactersList] = useState(
+        JSON.parse(localStorage.getItem("favoriteCharactersList")) || []
+      )
     
         async function getAllCharacters() {
             let counterOffset = 0
             let charactersListCopy = []
             const baseUrl = "https://gateway.marvel.com/v1/public/characters?offset="
             let url = `${baseUrl}${counterOffset}&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`
+
             try {
                 while(counterOffset < 100){
                     const response = await axios.get(url)
@@ -47,6 +50,7 @@ export default function List() {
         }
     }, [])
     
+    
     return (
         <RootLayout>
             <div id="list" className="">
@@ -59,24 +63,23 @@ export default function List() {
                             return(
                                 <div key={character.id} className="p-6 ">
                                         <Link href="/posts/focus">
-                                            <div onClick={() => Focus( character )}>
+                                            <div onClick={() => Focus(character)}>
                                                 <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name}  className="listImages" />
                                             </div>
                                         </Link>
-                                    <div className="pt-4 items-center">
+                                    <div className="pt-4">
                                     <table>
                                         <tbody>
                                             <tr>
                                                 <td>{character.name}</td>
                                                 <td rowSpan="2" className="star">
                                                     <div className="text-right">
-                                                        <img src="/images/emptyStar.png" />
+                                                        {VerifyFavorites(character, setFavoriteCharactersList)}
                                                     </div>
-                                                    </td>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>{character.id}</td>
-                                                
                                             </tr>
                                         </tbody>
                                     </table>
@@ -84,14 +87,33 @@ export default function List() {
                                 </div>
                             )
                         }
-                        })}
+                    })}
                 </div>
             </div>
         </RootLayout>
-        
     )
 }
 
-export function Favorites() {
-    
-}
+export function VerifyFavorites(character, setFavoriteCharactersList) {
+    let list = JSON.parse(localStorage.getItem("favoriteCharactersList")) || []
+  
+    let toggleFavorite = () => {
+        if (list.find((c) => c.id === character.id)) {
+            list = list.filter((c) => c.id !== character.id)
+        } 
+        else {
+            list.push(character)
+        }
+        localStorage.setItem("favoriteCharactersList", JSON.stringify(list))
+        setFavoriteCharactersList(list)
+    }
+  
+    return (
+        <div onClick={toggleFavorite}>
+            {list.find((c) => c.id === character.id) ? (<img src="/images/fullStar.png" alt="full star" />) : (<img src="/images/emptyStar.png" alt="empty star" />)}
+        </div>
+    )
+  }
+
+
+

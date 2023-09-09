@@ -68,14 +68,23 @@ input{
   color: #d1d5db;
   
 }
-
+.favorites {
+  color: #d1d5db;
+  width: 100%;
+}
+.favorites img{
+  cursor: pointer
+}
+.favorites table{
+  width: 100%;
+} 
 .listImages {
   width: 350px;
   height: 350px;
 }
 #focus {
   color: white;
-  width: 100%;
+  width: 80%;
   align-items: center;
   height:100%;
   padding-top: 10%;
@@ -83,11 +92,19 @@ input{
 }
 #focus table{
   text-align: justify;
+  width: 80%;
+  border-collapse: collapse;
 } 
 #focus td{
   
 }
+.tdImage {
+  width : 310px;
+}
 #focus img {
+  max-width: 100%;
+  height: auto;
   width: 300px;
   height: 300px;
+  display: block;
 }
