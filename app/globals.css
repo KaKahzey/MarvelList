@@ -21,9 +21,29 @@ body {
   font-size: large;
   font-family: "Marvel", sans-serif;
   width: 100%;
+  color: white;
+}
+.home {
+  font-size: xx-large;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+.loading {
+  font-size: xx-large;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+.loading img{
+  width: 60%;
+}
+footer{
+  color: white;
+  margin-top: auto;
 }
 main{
-  height: 100vh;
+  flex-grow: 1;
 }
 nav {
   color: #ed1d24;
@@ -34,7 +54,6 @@ header {
   width: 10%;
 }
 #navbar {
-  background-color: #f0f0f0;
   
 }
 
@@ -58,18 +77,20 @@ input{
 #list table{
   width: 100%;
 }
-
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 .star {
   float: right;
   vertical-align: middle;
   width: 40px;
 }
 #list {
-  color: #d1d5db;
   
 }
 .favorites {
-  color: #d1d5db;
   width: 100%;
 }
 .favorites img{
@@ -83,7 +104,6 @@ input{
   height: 350px;
 }
 #focus {
-  color: white;
   width: 80%;
   align-items: center;
   height:100%;
@@ -107,4 +127,7 @@ input{
   width: 300px;
   height: 300px;
   display: block;
+}
+.tests{
+  font-size: 5em;
 }

@@ -5,7 +5,7 @@ import './globals.css'
 export default function RootLayout({ children }) {
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen" >
       <header>
         <title>MARVEL Fanboy Dream Site</title>
         {/* paths better from root */}
@@ -21,12 +21,14 @@ export default function RootLayout({ children }) {
           </nav>
         </div>
       </header>
-      <main>
-        {children}
-      </main>
-      <footer>
-
-      </footer>
+      <div className="content">
+        <main className="flex-grow">
+          {children}
+        </main>
+        <footer className="text-center py-4">
+          <p>&copy; 2023 Clearly my website. All rights reserved.</p>
+        </footer>
+      </div>
     </div>
   )
 }
