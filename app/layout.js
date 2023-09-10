@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <footer className="text-center py-4">
-          <p>&copy; 2023 Clearly my website. All rights reserved.</p>
+          <p>&copy; 2023 Clearly mine. All rights reserved.</p>
         </footer>
       </div>
     </div>
